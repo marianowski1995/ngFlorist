@@ -7,13 +7,17 @@ import { AuthModule } from './auth/auth.module';
 import { ClientModule } from './client/client.module';
 import { LayoutModule } from './layout/layout.module';
 import { UserModule } from './user/user.module';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideDatabase,getDatabase } from '@angular/fire/database';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideDatabase, getDatabase } from '@angular/fire/database';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
-const routes: Routes = [{ path: '', pathMatch: 'full', redirectTo: 'client' }];
+const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'client' },
+  { path: 'admin', redirectTo: 'admin' },
+  { path: 'user', redirectTo: 'user' },
+];
 
 @NgModule({
   declarations: [AppComponent],
