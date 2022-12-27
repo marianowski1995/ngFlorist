@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../core/services/auth.service';
 
 @Component({
   selector: 'app-sign-up',
   template: `
-    <form class="w-25 mx-auto text-center">
+    <form class="w-25 mx-auto text-center" #form="ngForm">
       <i class="bi bi-person-circle display-1"></i>
 
       <h1 class="h3 mb-3 fw-normal">sign up</h1>
@@ -16,6 +17,17 @@ import { Component } from '@angular/core';
           placeholder="name@example.com"
         />
         <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control my-3"
+          id="name"
+          name="name"
+          placeholder="name"
+          ngModel
+        />
+        <label for="name">name</label>
       </div>
       <div class="form-floating">
         <input

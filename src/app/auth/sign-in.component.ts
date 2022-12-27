@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../core/services/auth.service';
 
 @Component({
   selector: 'app-sign-in',
   template: `
-    <form class="w-25 mx-auto text-center">
+    <form
+      class="w-25 mx-auto text-center"
+      #form="ngForm"
+      (submit)="loginUser(form.value)"
+    >
       <i class="bi bi-person-circle display-1"></i>
 
       <h1 class="h3 mb-3 fw-normal">sign in</h1>
@@ -14,6 +19,8 @@ import { Component } from '@angular/core';
           class="form-control my-3"
           id="floatingInput"
           placeholder="name@example.com"
+          name="email"
+          ngModel
         />
         <label for="floatingInput">Email address</label>
       </div>
@@ -23,6 +30,8 @@ import { Component } from '@angular/core';
           class="form-control my-3"
           id="floatingPassword"
           placeholder="Password"
+          name="password"
+          ngModel
         />
         <label for="floatingPassword">Password</label>
       </div>
@@ -37,4 +46,10 @@ import { Component } from '@angular/core';
     </form>
   `,
 })
-export class SignInComponent {}
+export class SignInComponent {
+  constructor(private authService: AuthService) {}
+
+  public loginUser(form: any) {
+    this.authService.login(form.email, form.password);
+  }
+}

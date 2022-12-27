@@ -4,7 +4,10 @@ import { ProductsService } from '../../core/services/products.service';
 
 @Component({
   template: `
-    <div class="container">
+    <div *ngIf="!products">
+      <app-loader></app-loader>
+    </div>
+    <div class="container" *ngIf="products">
       <div class="d-flex align-items-center justify-content-between">
         <app-searchbar></app-searchbar>
         <button
@@ -16,7 +19,7 @@ import { ProductsService } from '../../core/services/products.service';
           + new product
         </button>
       </div>
-      <span>Products total: {{ products.length }}</span>
+      <!-- <span>Products total: {{ products?.length }}</span> -->
 
       <table class="table my-5">
         <thead>

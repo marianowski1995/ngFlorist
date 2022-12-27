@@ -6,7 +6,13 @@ import { ProductsService } from '../core/services/products.service';
 @Component({
   selector: 'app-offer',
   template: `
-    <div class="container d-flex gap-4 flex-wrap justify-content-center">
+    <div *ngIf="!products">
+      <app-loader></app-loader>
+    </div>
+    <div
+      class="container d-flex gap-4 flex-wrap justify-content-center"
+      *ngIf="products"
+    >
       <!-- PRODUCT CARD -->
       <div class="card" style="width: 18rem;" *ngFor="let product of products">
         <img src="../../assets/img/flower.jpg" class="card-img-top" alt="..." />

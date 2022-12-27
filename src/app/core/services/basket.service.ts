@@ -8,7 +8,6 @@ export class BasketService {
   public getBasket() {
     let storage: any = localStorage.getItem('basket');
     let currentBasket = JSON.parse(storage);
-    console.log(currentBasket);
     return currentBasket;
   }
 
@@ -18,11 +17,14 @@ export class BasketService {
   }
 
   public removeFromBasket(product: Product) {
-    console.log(product);
+    console.log('[basket service]: Removing item from basket');
+    this.basket = this.basket.filter(b => b.id != product.id);
+    this.updateBasket();
   }
 
   public clearBasket() {
     this.basket = [];
+    this.updateBasket();
   }
 
   public updateBasket() {
@@ -34,11 +36,13 @@ export class BasketService {
     let storage: any = localStorage.getItem('basket');
     let currentBasket = JSON.parse(storage);
 
-    let result = currentBasket.reduce(
-      (acc: any, obj: any) => acc + obj.price,
-      0
-    );
-    console.log(result);
-    return result;
+    if (currentBasket) {
+      let result = currentBasket.reduce(
+        (acc: any, obj: any) => acc + obj.price,
+        0
+      );
+      console.log(result);
+      return result;
+    }
   }
 }

@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
+import { LoaderComponent } from './loader.component';
 import { SearchbarComponent } from './searchbar.component';
 
-const components = [SearchbarComponent];
+const components = [SearchbarComponent, LoaderComponent];
 
 @NgModule({
   declarations: [components],
