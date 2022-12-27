@@ -104,6 +104,16 @@
           "options": {
             "browserTarget": "ngFlorist:build"
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "ngFlorist:build:production",
+            "firebaseProject": "ngflorist-bbb9a",
+            "firebaseHostingSite": "ngflorist-bbb9a"
+          }
         }
       }
     }

@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "ngflorist-bbb9a"
+  },
+  "targets": {
+    "ngflorist-bbb9a": {
+      "hosting": {
+        "ngFlorist": [
+          "ngflorist-bbb9a"
+        ]
+      }
+    }
+  }
+}
