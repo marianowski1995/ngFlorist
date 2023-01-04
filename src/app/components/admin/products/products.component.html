@@ -1,0 +1,64 @@
+<div *ngIf="!products">
+  <app-loader></app-loader>
+</div>
+<div class="container" *ngIf="products">
+  <div class="d-flex align-items-center justify-content-between">
+    <app-searchbar></app-searchbar>
+    <button
+      class="btn btn-primary my-3 float-end"
+      type="button"
+      data-bs-toggle="modal"
+      data-bs-target="#productsCreator"
+    >
+      + new product
+    </button>
+  </div>
+
+  <!-- <span>Products total: {{ products?.length }}</span> -->
+
+  <table class="table my-5">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">name</th>
+        <th scope="col">price</th>
+        <th scope="col">available</th>
+        <th scope="col">actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <th scope="row">
+          {{ product.id }}
+        </th>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price | currency }}</td>
+        <td>{{ product.available ? 'yes' : 'no' }}</td>
+        <td>
+          <button
+            (click)="this.editedProduct = product"
+            class="btn btn-primary"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#productsEditor"
+          >
+            <i class="bi bi-search"></i>
+            Details
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="modal fade" id="productsCreator" tabindex="-1">
+  <product-creator (createdProduct)="createProduct($event)"></product-creator>
+</div>
+
+<div class="modal fade" id="productsEditor" tabindex="-1">
+  <product-editor
+    [product]="editedProduct"
+    (removedProduct)="removeProduct($event)"
+    (updatedProduct)="updateProduct(editedProduct.id, $event)"
+  ></product-editor>
+</div>

@@ -36,15 +36,16 @@ export class ProductsService {
     return id;
   }
 
-  public updateProduct(product: Product) {
+  public updateProduct(id: string, product: Product) {
+    console.log('product', id, product)
     const productDocumentReference = doc(
       this.firestore,
-      `products/${product.id}`
+      `products/${id}`,
     );
     return updateDoc(productDocumentReference, { ...product });
   }
 
-  public removeProduct(id: number) {
+  public removeProduct(id: string) {
     const productDocumentReference = doc(this.firestore, `products/${id}`);
     return deleteDoc(productDocumentReference);
   }

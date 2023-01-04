@@ -1,27 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
-import { SignInComponent } from './sign-in.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SignUpComponent } from './sign-up.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 import { AuthService } from '../core/services/auth.service';
-
-const routes: Routes = [
-  {
-    path: 'auth',
-    children: [
-      { path: '', pathMatch: 'full', component: SignInComponent },
-      { path: 'sign-up', component: SignUpComponent },
-      { path: 'sign-in', component: SignInComponent },
-    ],
-  },
-];
+import { SharedModule } from '../shared/shared.module';
+import { AuthRoutingModule } from './auth-routing.module';
 
 @NgModule({
   declarations: [SignUpComponent, SignInComponent],
   imports: [
-    RouterModule.forChild(routes),
+    AuthRoutingModule,
+    SharedModule,
     FormsModule,
     CommonModule,
     HttpClientModule,

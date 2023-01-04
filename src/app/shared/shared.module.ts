@@ -1,12 +1,24 @@
-import { NgModule } from '@angular/core';
-import { LoaderComponent } from './loader.component';
-import { SearchbarComponent } from './searchbar.component';
+import { NgModule } from "@angular/core";
+import { LoaderComponent } from "./loader/loader.component";
+import { SearchbarComponent } from "./searchbar/searchbar.component";
+import { BannerComponent } from "./banner/banner.component";
+import { FooterComponent } from "./footer/footer.component";
+import { HeaderComponent } from "./header/header.component";
+import { RouterModule } from "@angular/router";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { CommonModule } from "@angular/common";
 
-const components = [SearchbarComponent, LoaderComponent];
+const COMPONENTS = [
+  SearchbarComponent,
+  LoaderComponent,
+  BannerComponent,
+  FooterComponent,
+  HeaderComponent,
+];
 
 @NgModule({
-  declarations: [components],
-  exports: [components],
-  imports: [],
+  declarations: [COMPONENTS],
+  exports: [COMPONENTS, FormsModule, ReactiveFormsModule],
+  imports: [RouterModule, CommonModule],
 })
 export class SharedModule {}
