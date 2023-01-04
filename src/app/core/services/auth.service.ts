@@ -1,19 +1,25 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {
-  CollectionReference, doc,
+  CollectionReference,
+  doc,
   DocumentData,
-  Firestore, setDoc,
+  Firestore,
+  setDoc,
 } from '@angular/fire/firestore';
 import { addDoc, collection } from '@firebase/firestore';
 import firebase from 'firebase/compat/app';
-import {UserSignUpForm, UserSignUpRequest} from "../interfaces/user.interface";
-import {BehaviorSubject} from "rxjs";
+import {
+  UserSignUpForm,
+  UserSignUpRequest,
+} from '../interfaces/user.interface';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   public usersCollection!: CollectionReference<DocumentData>;
-  private _userData: BehaviorSubject<firebase.auth.UserCredential | null> = new BehaviorSubject<firebase.auth.UserCredential | null>(null);
+  private _userData: BehaviorSubject<firebase.auth.UserCredential | null> =
+    new BehaviorSubject<firebase.auth.UserCredential | null>(null);
 
   constructor(
     public auth: AngularFireAuth,
@@ -41,18 +47,22 @@ export class AuthService {
   public signUp(userData: UserSignUpForm) {
     const userRequest: UserSignUpRequest = {
       email: userData.email,
-      name: userData.name
-    }
+      name: userData.name,
+      isAdmin: false,
+    };
 
     this.auth
-        .createUserWithEmailAndPassword(userData.email, userData.password)
-        .then((userCredential: firebase.auth.UserCredential) => {
-          console.log('success', userCredential);
-          setDoc(doc(this.firestore, 'user', userCredential.user?.uid || ''), userRequest)
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      .createUserWithEmailAndPassword(userData.email, userData.password)
+      .then((userCredential: firebase.auth.UserCredential) => {
+        console.log('success', userCredential);
+        setDoc(
+          doc(this.firestore, 'user', userCredential.user?.uid || ''),
+          userRequest
+        );
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   public signOut() {

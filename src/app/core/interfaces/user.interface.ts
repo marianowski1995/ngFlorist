@@ -14,4 +14,5 @@ export interface UserSignUpForm {
 export interface UserSignUpRequest {
   email: string;
   name: string;
+  isAdmin: boolean;
 }

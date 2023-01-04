@@ -3,6 +3,7 @@ import { AuthService } from '../../core/services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserSignUpForm } from '../../core/interfaces/user.interface';
 import { user } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,7 +15,8 @@ export class SignUpComponent implements OnInit {
 
   constructor(
     private readonly authService: AuthService,
-    private readonly fb: FormBuilder
+    private readonly fb: FormBuilder,
+    private readonly router: Router
   ) {}
 
   public ngOnInit(): void {
@@ -24,6 +26,7 @@ export class SignUpComponent implements OnInit {
   public signUp(): void {
     const userData: UserSignUpForm = this.form.getRawValue();
     this.authService.signUp(userData);
+    this.router.navigate(['/']);
   }
 
   private initForm() {

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 
 @Component({
@@ -7,9 +8,13 @@ import { AuthService } from '../../core/services/auth.service';
   styleUrls: ['./sign-in.component.css'],
 })
 export class SignInComponent {
-  constructor(private authService: AuthService) {}
+  constructor(
+    private readonly authService: AuthService,
+    private readonly router: Router
+  ) {}
 
   public loginUser(form: any) {
     this.authService.signIn(form.email, form.password);
+    this.router.navigate(['/']);
   }
 }
