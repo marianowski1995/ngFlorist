@@ -7,6 +7,7 @@ import { HeaderComponent } from "./header/header.component";
 import { RouterModule } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
+import { MessagesComponent } from './messages/messages.component';
 
 const COMPONENTS = [
   SearchbarComponent,
@@ -17,7 +18,7 @@ const COMPONENTS = [
 ];
 
 @NgModule({
-  declarations: [COMPONENTS],
+  declarations: [COMPONENTS, MessagesComponent],
   exports: [COMPONENTS, FormsModule, ReactiveFormsModule],
   imports: [RouterModule, CommonModule],
 })
