@@ -2,7 +2,7 @@ export interface User {
   id: string;
   name: string;
   email: string;
-  admin: boolean;
+  isAdmin: boolean;
 }
 
 export interface UserSignUpForm {
