@@ -1,0 +1,120 @@
+<div class="container my-5">
+  <div>
+    <h1>Your contact details:</h1>
+    <ul class="list-group w-50 my-5">
+      <li
+        class="list-group-item d-flex justify-content-between align-items-center"
+      >
+        <span>name</span>
+        <span>{{ userData?.name }}</span>
+      </li>
+
+      <li
+        class="list-group-item d-flex justify-content-between align-items-center"
+      >
+        <span>phone number</span>
+        <span>+44 0634-572-123</span>
+      </li>
+
+      <li
+        class="list-group-item d-flex justify-content-between align-items-center"
+      >
+        <span>email</span>
+        <span>{{ userData?.email }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <h1>Shipping address:</h1>
+    <ul class="list-group w-50 my-5">
+      <li
+        class="list-group-item d-flex justify-content-between align-items-center"
+      >
+        <span>Address 1st line</span>
+        <span>101 Nowhere Street</span>
+      </li>
+      <li
+        class="list-group-item d-flex justify-content-between align-items-center"
+      >
+        <span>Post code</span>
+        <span>Z12-1AA</span>
+      </li>
+
+      <li
+        class="list-group-item d-flex justify-content-between align-items-center"
+      >
+        <span>City</span>
+        <span>London</span>
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <h1>Order summary</h1>
+
+    <ul class="list-group w-50 my-5">
+      <li
+        class="list-group-item d-flex justify-content-between align-items-center"
+        *ngFor="let item of currentBasket; let i = index"
+      >
+        <span>{{ i + 1 }} - {{ item.name }}</span>
+        <span>{{ item.price | currency }}</span>
+      </li>
+    </ul>
+
+    <hr class="w-50" />
+
+    <ul class="list-group w-50 my-5">
+      <li
+        class="list-group-item d-flex justify-content-between align-items-center"
+      >
+        <span>Your products total price: </span>
+        {{ productsTotal | currency }}
+      </li>
+
+      <li
+        class="list-group-item d-flex justify-content-between align-items-center"
+      >
+        <span>Shipping Costs: </span>
+        {{ shippingCost | currency }}
+      </li>
+
+      <li
+        class="list-group-item d-flex justify-content-between align-items-center"
+      >
+        <span>Tax rate:</span>
+        {{ taxRate }}%
+      </li>
+
+      <li
+        class="list-group-item d-flex justify-content-between align-items-center"
+      >
+        <span class="lead">Total: </span>
+        <span class="lead">{{ total | currency }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <h1>Payment method</h1>
+
+    <ul class="list-group w-50 my-5">
+      <li class="list-group-item">
+        This time it is on us... It is not real store anyway...
+      </li>
+    </ul>
+  </div>
+
+  <div class="d-flex gap-1 justify-content-end">
+    <button
+      class="btn btn-primary btn-lg"
+      routerLink="/user/transaction-success"
+    >
+      Pay
+    </button>
+    <button class="btn btn-danger btn-lg" routerLink="/user/basket">
+      Cancel
+    </button>
+  </div>
+</div>

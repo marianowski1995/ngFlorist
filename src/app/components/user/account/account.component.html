@@ -1,6 +1,31 @@
 <div class="container">
   <h1>Your account</h1>
+  <div class="col-auto">
+    <div class="input-group mb-2 w-25">
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+          <i class="bi bi-envelope-at"></i>
+        </div>
+      </div>
+      <input class="form-control" [placeholder]="userData?.email" disabled />
+    </div>
+  </div>
 
-  {{ userData?.name }}
-  {{ userData?.email }}
+  <div class="col-auto">
+    <div class="input-group mb-2 w-25">
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+          <i class="bi bi-person-circle"></i>
+        </div>
+      </div>
+      <input class="form-control" [placeholder]="userData?.name" disabled />
+    </div>
+  </div>
+
+  <button class="btn btn-primary my-2" routerLink="/user/basket">
+    <i class="bi bi-cart mx-2"></i>
+    Go to basket
+  </button>
+
+  <app-orders></app-orders>
 </div>
