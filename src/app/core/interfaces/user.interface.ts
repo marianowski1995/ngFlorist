@@ -1,8 +1,11 @@
+import { Order } from './order.interface';
+
 export interface User {
   id: string;
   name: string;
   email: string;
   isAdmin: boolean;
+  orders: Order[];
 }
 
 export interface UserSignUpForm {
@@ -15,4 +18,5 @@ export interface UserSignUpRequest {
   email: string;
   name: string;
   isAdmin: boolean;
+  orders: Order[];
 }

@@ -1,7 +1,9 @@
 <div class="container text-center my-5" *ngIf="!basket || basket.length == 0">
   <i class="bi bi-basket display-1"></i>
   <h1 class="mt-5">Your basket is empty...</h1>
-  <p>Browse our <a routerLink="/client/offer">offer</a> to buy something new</p>
+  <p>
+    Browse our <a routerLink="/florist/offer">offer</a> to buy something new
+  </p>
 </div>
 
 <div class="container" *ngIf="basket && basket.length > 0">
@@ -43,7 +45,7 @@
 
   <div class="d-flex justify-content-between">
     <h2>Total: {{ this.total | currency }}</h2>
-    <button class="btn btn-primary">
+    <button class="btn btn-primary" routerLink="/user/checkout">
       <i class="bi bi-bag"></i>
       Go to checkout
     </button>

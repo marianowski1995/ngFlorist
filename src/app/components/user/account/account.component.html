@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Your account</h1>
   <div class="col-auto">
-    <div class="input-group mb-2 w-25">
+    <div class="input-group mb-2 w-50">
       <div class="input-group-prepend">
         <div class="input-group-text">
           <i class="bi bi-envelope-at"></i>
@@ -12,7 +12,7 @@
   </div>
 
   <div class="col-auto">
-    <div class="input-group mb-2 w-25">
+    <div class="input-group mb-2 w-50">
       <div class="input-group-prepend">
         <div class="input-group-text">
           <i class="bi bi-person-circle"></i>
@@ -27,5 +27,5 @@
     Go to basket
   </button>
 
-  <app-orders></app-orders>
+  <app-orders [orders]="orders"></app-orders>
 </div>

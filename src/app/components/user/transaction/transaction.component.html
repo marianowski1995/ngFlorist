@@ -1,4 +1,4 @@
-<div class="container my-5">
+<form class="container my-5">
   <div>
     <h1>Your contact details:</h1>
     <ul class="list-group w-50 my-5">
@@ -110,6 +110,8 @@
     <button
       class="btn btn-primary btn-lg"
       routerLink="/user/transaction-success"
+      type="submit"
+      (click)="submitOrder()"
     >
       Pay
     </button>
@@ -117,4 +119,4 @@
       Cancel
     </button>
   </div>
-</div>
+</form>

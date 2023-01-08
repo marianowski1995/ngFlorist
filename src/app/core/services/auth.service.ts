@@ -37,6 +37,7 @@ export class AuthService {
       email: userData.email,
       name: userData.name,
       isAdmin: false,
+      orders: [],
     };
 
     this.auth
@@ -57,7 +58,7 @@ export class AuthService {
         this._userData.next(newUser);
         this.router.navigate(['/']);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }
@@ -68,7 +69,7 @@ export class AuthService {
       .then((userCredential: firebase.auth.UserCredential) => {
         this.getUserDetailsFromDatabase(userCredential.user?.uid);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }
@@ -104,7 +105,7 @@ export class AuthService {
 
         this.router.navigate(['/']);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }

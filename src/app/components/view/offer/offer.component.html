@@ -1,0 +1,14 @@
+<ng-container *ngIf="!products">
+  <app-loader></app-loader>
+</ng-container>
+
+<div
+  *ngIf="products"
+  class="container d-flex gap-5 justify-content-center flex-wrap"
+>
+  <app-product-card
+    *ngFor="let product of products"
+    [product]="product"
+    (productAddedToBasket)="addToBasket($event)"
+  ></app-product-card>
+</div>

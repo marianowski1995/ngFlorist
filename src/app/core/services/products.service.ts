@@ -37,11 +37,8 @@ export class ProductsService {
   }
 
   public updateProduct(id: string, product: Product) {
-    console.log('product', id, product)
-    const productDocumentReference = doc(
-      this.firestore,
-      `products/${id}`,
-    );
+    console.log('product', id, product);
+    const productDocumentReference = doc(this.firestore, `products/${id}`);
     return updateDoc(productDocumentReference, { ...product });
   }
 

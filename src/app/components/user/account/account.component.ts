@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Order } from 'src/app/core/interfaces/order.interface';
 import { User } from 'src/app/core/interfaces/user.interface';
 import { AuthService } from 'src/app/core/services/auth.service';
 
@@ -9,6 +10,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class AccountComponent implements OnInit {
   public userData!: User | null;
+  public orders!: Order[] | undefined;
 
   constructor(private readonly authService: AuthService) {}
 
@@ -16,6 +18,8 @@ export class AccountComponent implements OnInit {
     this.authService.getUserData().subscribe((value: User | null) => {
       console.log('[header component]', value);
       this.userData = value;
+      this.orders = value?.orders;
+      console.log(this.orders);
     });
   }
 }

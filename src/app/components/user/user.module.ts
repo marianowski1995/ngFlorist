@@ -7,6 +7,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { AccountComponent } from './account/account.component';
 import { TransactionSuccessComponent } from './transaction/transaction-success/transaction-success.component';
+import { TransactionFailureComponent } from './transaction/transaction-failure/transaction-failure.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { TransactionSuccessComponent } from './transaction/transaction-success/t
     TransactionComponent,
     AccountComponent,
     TransactionSuccessComponent,
+    TransactionFailureComponent,
   ],
   imports: [UserRoutingModule, CommonModule, FormsModule],
 })
